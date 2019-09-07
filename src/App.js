@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import HeroList from './components/HeroList';
 import {heroes} from 'dotaconstants';
+import './App.css'
 
 class App extends Component {
   constructor() {

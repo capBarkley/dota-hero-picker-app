@@ -14,7 +14,7 @@ const convertAttr = (attr) => {
 
 const HeroList = ({heroes}) => {
     return(
-        <div>
+        <div className='heroList'>
             {
                 heroes.map(hero =>{
                     return(
