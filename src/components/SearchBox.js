@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SearchBox = () =>{
+const SearchBox = ({searchChange}) =>{
 
     const listOfAbilities = ["stun", "slow", "silence"];
     return(
         <div>
             <div>
-                <input placeholder='Search hero by the name'/>
+                <input placeholder='Search hero by the name' onChange={searchChange}/>
             </div>
             <div>
                 <label>Skills</label>
