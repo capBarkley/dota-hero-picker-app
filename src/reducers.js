@@ -14,16 +14,20 @@ export const searchHero = (state = initialStateSearch, action = {}) => {
 }
 
 const initialStateAbilities = {
-    abilities: []
+    abilities: [
+        {id: 1, value: 'silence', isChecked: false},
+        {id: 2, value: 'stun', isChecked: false},
+        {id: 3, value: 'slow', isChecked: false}
+    ]
 }
 
-export const searchAbilities = (state = initialStateAbilities, action ={}) => {
+export const setAbilities = (state = initialStateAbilities, action ={}) => {
     switch(action.type){
         case CHANGE_SEARCH_ABILITIES:
-            if (state.abilities.includes(action.payload)) {
-                return state
-            } else {
-                return {...state, abilities: [...state.abilities, action.payload]}
-            }
+            console.log(state);
+            return state;
+
+            // state.abilities.filter(abil => abil.value === action.payload.value).isChecked = action.payload.isChecked;
+            // return {...state, abilities: state.abilities}
     }
 }

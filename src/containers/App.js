@@ -4,17 +4,19 @@ import HeroList from '../components/HeroList';
 import SearchBox from '../components/SearchBox'
 import { heroes } from 'dotaconstants';
 import './App.css';
-import { setSearchField } from '../actions';
+import { setSearchField, setAbilities } from '../actions';
 
 const mapStateToProps = state => {
   return {
-    searchField: state.searchHero.searchField
+    searchField: state.searchHero.searchField,
+    abilities: state.setAbilities.abilities
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onCheckboxChange: (event) => dispatch(setAbilities(event.target.checked))
   }
 }
 

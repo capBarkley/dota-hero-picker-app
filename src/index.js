@@ -7,10 +7,10 @@ import thunkMiddlware from 'redux-thunk'
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import { searchHero  } from './reducers'
+import { searchHero, setAbilities } from './reducers'
 
 const logger = createLogger();
-const rootReducer = combineReducers({searchHero})
+const rootReducer = combineReducers({searchHero, setAbilities})
 const store = createStore(rootReducer, applyMiddleware(thunkMiddlware, logger));
 
 ReactDOM.render(
