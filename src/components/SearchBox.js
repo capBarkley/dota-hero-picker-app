@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SearchBox = ({handleCheckChange}) =>{
+const SearchBox = ({searchChange}) =>{
 
     const listOfAbilities = ["stun", "slow", "silence"];
     return(
         <div>
             <div>
-                <input placeholder='Search hero by the name'/>
+                <input placeholder='Search hero by the name' onChange={searchChange}/>
             </div>
             <div>
                 <label>Skills</label>
@@ -14,7 +14,7 @@ const SearchBox = ({handleCheckChange}) =>{
                     listOfAbilities.map(abil => {
                         return (
                             <>
-                             <input type="checkbox" name={abil} value={abil} onChange={handleCheckChange}/>{abil}
+                             <input type="checkbox" name={abil} value={abil}/>{abil}
                             </>
                         );
                     })

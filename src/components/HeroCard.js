@@ -31,7 +31,7 @@ const HeroCard = ({hero, listOfAblities}) => {
     });
 
     const name = hero.name; //id героя
-    const abilitiesIds = hero_abilities[name].abilities.filter(abil => abil != 'generic_hidden'); //массив из id скиллов героя, кроме 'generic_hidden'
+    const abilitiesIds = hero_abilities[name].abilities.filter(abil => abil !== 'generic_hidden'); //массив из id скиллов героя, кроме 'generic_hidden'
 
     //массив обьектов скиллов героя из abilities.json модуля dotaconstants
     const abils = abilitiesIds.map(abil => {
@@ -42,63 +42,30 @@ const HeroCard = ({hero, listOfAblities}) => {
         backgroundColor: bgColor
     }
     
-    if (listOfAblities){
-        listOfAblities.map(abilInTheList => {
-            abils.map(abil => {
-                if (abil.desc.includes(abilInTheList)) {
-                    return(
-                        <div className='heroCard' style={style}>
-                            <h2>{hero.localized_name}</h2>
-                            <img className='heroImg' alt='heroImg' src={`https://api.opendota.com${hero.img}`} weight='120' height='120'/>
-                            <div className='heroDesc'>
-                                <p>{attr}</p>
-                                <p>{hero.attack_type}</p>
-                                <p>
-                                    {
-                                        roles.map(role => `${role} `)
-                                    }
-                                </p>
-                            </div>
-                            <div className='heroAbil'>
-                                    {
-                                        abils.map(abil => {
-                                            return(
-                                                <img src={`https://api.opendota.com${abil.img}`}/>
-                                            )
-                                        })
-                                    }
-                            </div>
-                        </div>
-                    );
-                }
-            })
-        })
-    } else {
-        return(
-            <div className='heroCard' style={style}>
-                <h2>{hero.localized_name}</h2>
-                <img className='heroImg' alt='heroImg' src={`https://api.opendota.com${hero.img}`} weight='120' height='120'/>
-                <div className='heroDesc'>
-                    <p>{attr}</p>
-                    <p>{hero.attack_type}</p>
-                    <p>
-                        {
-                            roles.map(role => `${role} `)
-                        }
-                    </p>
-                </div>
-                <div className='heroAbil'>
-                        {
-                            abils.map(abil => {
-                                return(
-                                    <img src={`https://api.opendota.com${abil.img}`}/>
-                                )
-                            })
-                        }
-                </div>
+    return(
+        <div className='heroCard' style={style}>
+            <h2>{hero.localized_name}</h2>
+            <img className='heroImg' alt={`${hero.localized_name}_img`} src={`https://api.opendota.com${hero.img}`} weight='120' height='120'/>
+            <div className='heroDesc'>
+                <p>{attr}</p>
+                <p>{hero.attack_type}</p>
+                <p>
+                    {
+                        roles.map(role => `${role} `)
+                    }
+                </p>
             </div>
-        );
-    }
+            <div className='heroAbil'>
+                    {
+                        abils.map(abil => {
+                            return(
+                                <img alt={`${hero.localized_name}_abil`} src={`https://api.opendota.com${abil.img}`}/>
+                            )
+                        })
+                    }
+            </div>
+        </div>
+    );
 }
 
 export default HeroCard;

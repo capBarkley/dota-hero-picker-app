@@ -1,21 +1,13 @@
 import React from 'react';
 import HeroCard from './HeroCard';
 
-const HeroList = ({heroes, attr, ablities}) => {
+const HeroList = ({heroes, attr}) => {
     return(
         <div className='heroList'>
             {
-                heroes.map((hero, index) =>{
-                    if (hero.primary_attr === attr) {
-                        return(
-                            <HeroCard
-                                key={hero.id}
-                                hero={hero}
-                                listOfAblities={ablities}
-                                />
-                        );
-                    }
-                })
+                heroes
+                    .filter(hero => hero.primary_attr === attr)
+                    .map((hero, index) => <HeroCard key={hero.id} hero={hero}/>)
             }
         </div>
     );
