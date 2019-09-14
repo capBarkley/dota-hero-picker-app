@@ -49,17 +49,15 @@ const HeroCard = ({hero, listOfAblities}) => {
             <div className='heroDesc'>
                 <p>{attr}</p>
                 <p>{hero.attack_type}</p>
-                <p>
-                    {
-                        roles.map(role => `${role} `)
-                    }
-                </p>
+                {
+                    roles.map((role, i) => <span key={roles[i]}>{`${role} `}</span>)
+                }
             </div>
             <div className='heroAbil'>
                     {
-                        abils.map(abil => {
+                        abils.map((abil, i) => {
                             return(
-                                <img alt={`${hero.localized_name}_abil`} src={`https://api.opendota.com${abil.img}`}/>
+                                <img key={abil[i]} alt={`${hero.localized_name}_abil`} src={`https://api.opendota.com${abil.img}`}/>
                             )
                         })
                     }

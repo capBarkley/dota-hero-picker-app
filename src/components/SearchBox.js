@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-const SearchBox = ({searchChange}) =>{
+const SearchBox = ({searchChange, onCheckboxChange}) =>{
 
     const listOfAbilities = ["stun", "slow", "silence"];
     return(
@@ -11,11 +11,11 @@ const SearchBox = ({searchChange}) =>{
             <div>
                 <label>Skills</label>
                 {
-                    listOfAbilities.map(abil => {
+                    listOfAbilities.map((abil, i) => {
                         return (
-                            <>
-                             <input type="checkbox" name={abil} value={abil}/>{abil}
-                            </>
+                            <Fragment key={listOfAbilities[i]}>
+                             <input type="checkbox" name={abil} value={abil} onClick={onCheckboxChange}/>{abil}
+                            </Fragment>
                         );
                     })
                 }

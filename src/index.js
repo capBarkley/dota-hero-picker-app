@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { createLogger } from 'redux-logger'
 import thunkMiddlware from 'redux-thunk'
 import './index.css';
@@ -11,7 +11,8 @@ import { searchHero, setAbilities } from './reducers'
 
 const logger = createLogger();
 const rootReducer = combineReducers({searchHero, setAbilities})
-const store = createStore(rootReducer, applyMiddleware(thunkMiddlware, logger));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddlware, logger)));
 
 ReactDOM.render(
                 <Provider store={store}>

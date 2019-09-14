@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onCheckboxChange: (event) => dispatch(setAbilities(event.target.checked))
+    onCheckboxChange: (event) => dispatch(setAbilities(event.target.value))
   }
 }
 
@@ -39,15 +39,18 @@ class App extends Component {
 
   render(){
     const {heroes} = this.state;
-    const { searchField, onSearchChange } = this.props;
+    const { searchField, onSearchChange, onCheckboxChange } = this.props;
     const filteredHeroes = heroes.filter( hero => {
-      return hero.localized_name.toLowerCase().includes(searchField.toLowerCase());
+      return (hero.localized_name.toLowerCase().includes(searchField.toLowerCase()) && true);
     })
     return !heroes.length ? <h2 className='tc'>Loading</h2>
       :
       (
         <>
-          <SearchBox searchChange={onSearchChange}/>
+          <SearchBox
+            searchChange={onSearchChange}
+            onCheckboxChange={onCheckboxChange}
+          />
           <HeroList
             heroes={filteredHeroes}
             attr='str'/>

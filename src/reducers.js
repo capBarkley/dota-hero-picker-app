@@ -21,13 +21,16 @@ const initialStateAbilities = {
     ]
 }
 
-export const setAbilities = (state = initialStateAbilities, action ={}) => {
+export const setAbilities = (state = initialStateAbilities, action = {}) => {
     switch(action.type){
         case CHANGE_SEARCH_ABILITIES:
-            console.log(state);
+            state.abilities.map(abilObj => {
+                if (abilObj.value === action.payload) {
+                    abilObj.isChecked = !abilObj.isChecked;
+                }
+            })
             return state;
-
-            // state.abilities.filter(abil => abil.value === action.payload.value).isChecked = action.payload.isChecked;
-            // return {...state, abilities: state.abilities}
+        default:
+            return state;
     }
 }
